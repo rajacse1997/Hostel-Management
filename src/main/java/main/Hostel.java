@@ -31,14 +31,29 @@ public class Hostel{
            }
 	   }
 	   public static boolean readData(String name) {
+		   //*************************
+		   boolean check=false;
+		   //*************************
 		   try{
 	             BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
 	               String line = null;
-	            
+	               //*************************
+	            line= br.readLine();
+	           
+	            //******************************
 	               //write your code here !!!
+	               
 	               while ((line = br.readLine()) != null) {
 		               String[] splited = line.split("\\s+");
 		               String checkName = splited[0];
+		               //*********************************************************
+		               
+		            	   if(checkName.equals(name))
+		            		   check=true;
+		            	   else 
+		            		   check=false;
+		               
+		               //*************************************************************
 		               //write your code here !!!
 //		               compare check name with name and return true if present and false if not
 	               }
@@ -47,10 +62,19 @@ public class Hostel{
 	            }catch(Exception e){
 	                System.out.println(e);
 	            }
-			return true;
+			return check;
 	   }
        public static void allotHostel(){
+    	  //**********************************
+    	   try {
+   			writedata();
+   		} catch (IOException e) {
+   			// TODO Auto-generated catch block
+   			e.printStackTrace();
+   		}
+    	   //************************************
     	   //write your code here!!!
+    	   
     	   
        }
 
@@ -74,9 +98,9 @@ public class Hostel{
            
        public static boolean verifyName(String name){
     	   boolean chk = true;
-    	   
-    	   //write your code here
-    	   
+    	   //*****************************
+    	   chk=readData(name);
+    	   //******************************
     	   return chk;
         }
         
